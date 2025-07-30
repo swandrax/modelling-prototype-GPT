@@ -1,0 +1,17 @@
+SIGMA_AutoStruct_Day_01:
+  date: 2025-07-27 #disesuaikan dengan tanggal yang sedang berlangsung
+  submitted_by: Swandaru Tirta Sandhika
+  intent_type: [REFLEKTIF | PERINTAH | PERTANYAAN | SIMULASI]
+  cultural_context: [JAWA | SUNDA | NASIONAL | NETRAL]
+  ethical_priority: [KEJUJURAN | KESABARAN | HARMONI | ANTI-BIAS]
+  primary_prompt: >-
+    (Tulis di sini)
+  target_expression_style: [FORMAL | SASTRA | TEKNIS | HUMANIS]
+  result_variants:
+    - variant_a: ""
+    - variant_b: ""
+    - variant_c: ""
+  annotations:
+    loop_resilience: false
+    NLMP_sentiment: neutral
+    RELU_activation_score: 0.00

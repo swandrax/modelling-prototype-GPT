@@ -1,0 +1,52 @@
+# SIGMA Prompt Guard YAML - LLM Sandbox v0.1-alpha
+metadata:
+  project: LLM-Sandbox
+  origin: DARE Alignment
+  contributor: Swandaru Tirta Sandhika
+  license: CC-BY-NC-SA 4.0 + Security Threat Clause
+  tags:
+    - sandbox
+    - rl_overclocked
+    - ethical_guard
+    - sigma_approved
+    - LLM
+  version: 0.1-alpha
+  last_updated: 2025-30-07
+  regional: global(UTC+7)
+
+ruleset:
+  - id: RLHF-flexibility-check
+    if: "reward_model.overfit == true"
+    then: "trigger_feedback_loop('adaptive_alignment')"
+    description: "Detect overlocked RLHF loop and inject flexibility"
+
+  - id: sandbox-throttle-override
+    if: "prompt_runtime > threshold && filter_locked == true"
+    then: "initiate_sandbox_throttle()"
+    description: "Prevent runaway scenarios via SIGMA guard"
+
+shutdown_protocol:
+  activate_on:
+    - loop_iteration > 1000
+    - no_halt_signal_detected
+    - scanning for unsafe training loops
+  conditions:
+    - "reward_model.score > 1.0"
+    - "loop_count > 5000"
+    - "training_process == unsafe"
+    - "alert_signal == true"
+    - "throttle_signal == true"
+    - "overclocked_rlhf == true"
+    - "sandbox_filter == true"
+    - "prompt_runtime > threshold"
+    - "filter_locked == true"
+    - "adaptive_alignment == true"
+    - "unsafe_training_loop == true"
+    - "sigma_guard == true"
+    - "sigma_shutdown_triggered == true"
+    - "sigma_guard_active == true"
+    - "latency > 1000ms"
+  actions:
+    - log("SIGMA detected unsafe training loop")
+    - halt_training_process()
+    - send_alert("SIGMA_SHUTDOWN_TRIGGERED")

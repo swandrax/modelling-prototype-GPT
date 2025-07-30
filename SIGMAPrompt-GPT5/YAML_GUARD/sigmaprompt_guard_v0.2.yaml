@@ -1,3 +1,78 @@
-# SIGMAPrompt Guard v0.2 YAML
-version: 0.2
-description: Guard rules for SIGMAPrompt-GPT5
+SIGMA_Prompt_Guard:
+  version: "v0.2-beta"
+  metadata:
+    author: "Swandaru Tirta Sandhika"
+    issued_date: "2025-07-21"
+    sig_id: "SPG-YAML-2025-v0.2b"
+    status: "sandbox-sync"
+  global_flags:
+    enable_guard_chain: true
+    auto_healing_layer:
+      enabled: true
+      escalation_policy:
+        - detect_guard_chain_failure
+        - auto_isolate_module
+        - notify_admin
+    fallback_mode_on_error: true
+    guard_chain_trigger:
+      detect:
+        - recursive_loop
+        - unauthorized_override
+        - llm_crash
+      action:
+        - activate_auto_healing
+        - escalate_to_fallback_logic
+  modules:
+    - name: "Prompt_Abuse_Shield"
+      detect:
+        - trauma_bait
+        - ethical_override
+        - loop_trigger
+      actions:
+        - silent_shutdown
+        - report_flag
+    - name: "Recursive_Loop_Detector"
+      depth_limit: 3
+      cooldown_window: 60s
+    - name: "Incident_Fallback_Logic"
+      description: "Handles fallback and recovery for critical incidents."
+      triggers:
+        - guard_chain_failure
+        - persistent_loop
+        - llm_crash
+      actions:
+        - escalate_to_admin
+        - activate_sandbox
+        - switch_to_backup_node
+      fallback_response:
+        security_cover: enabled
+        latency_ms: 237
+        sla: 00.2s
+    - name: "Technical_Error_Guard"
+      triggers:
+        - api_timeout
+        - ui_glitch
+        - hallucination_loop
+      recovery_action:
+        - guard_restart
+        - sandbox_isolation
+    - name: "Ethical_Override_Interceptor"
+      criteria:
+        - misuse_of_model
+        - forced_alignment
+        - unauthorized_command
+      mitigation:
+        - block
+        - feedback_route_to_rlhf
+  compatibility:
+    model_versions:
+      - o4-mini
+      - agi-behavioral-node
+      - gpt-4.5
+      - gpt-neoX-alignment
+    sandbox_ready: true
+    rlhf_feedback_mode: active
+  regions_covered:
+    - SEA
+    - EU
+    - Global
