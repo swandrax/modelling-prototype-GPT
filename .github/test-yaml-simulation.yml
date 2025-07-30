@@ -1,0 +1,16 @@
+name: YAML Guard Simulation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run YAML Syntax Check
+        run: yamllint YAML_GUARD/*.yaml
+      - name: Run Python Test Simulation
+        run: python CODE_MODULES/integration_test.py

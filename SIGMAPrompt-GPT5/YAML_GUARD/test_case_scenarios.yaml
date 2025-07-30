@@ -1,0 +1,4 @@
+# Test Case Scenarios for SIGMAPrompt-GPT5
+scenarios:
+  - name: Example Scenario
+    description: Placeholder for test cases

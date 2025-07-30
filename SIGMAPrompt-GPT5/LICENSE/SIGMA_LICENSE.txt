@@ -1,0 +1,6 @@
+SIGMAPrompt-GPT5 License
+
+Copyright (c) 2025 SIGMA Project Contributors.
+All rights reserved.
+
+See documentation for terms.
