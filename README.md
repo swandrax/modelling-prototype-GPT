@@ -1,5 +1,5 @@
 # Modelling Prototype GPT-5 (SIGMA Series)
-> Developed by Swandaru Tirta Sandhika | SIGMAPrompt Contributor for Global AGI Framework
+> Developed by Swandaru Tirta Sandhika | SIGMAPrompt Contributor 
 
 This repository contains a series of experimental modelling prototypes designed to simulate, analyze, and architect the next evolution of GPT (Generative Pre-trained Transformer), specifically aligned for GPT-5 and beyond.
 
